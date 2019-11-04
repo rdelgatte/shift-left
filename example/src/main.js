@@ -1,9 +1,8 @@
-export const firstLanguageByType = (developer, type) => {
-  let result = [];
-  developer.languages.forEach(l => {
-    if (l.type === type) {
-      result.push(l);
-    }
-  });
-  return result[0];
+export const firstRankedLanguageForCategory = (person, category) => {
+  if (person.role === "Developer" && person.rankedLanguages !== undefined) {
+    return person.rankedLanguages
+      .filter(rankedLanguage => rankedLanguage.language.category === category)
+      .sort((first, second) => (first.rank < second.rank) ? 1 : -1)
+      .pop();
+  }
 };

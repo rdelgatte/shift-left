@@ -1,46 +1,55 @@
-import {firstLanguageByType} from "../src/main.js";
+import {firstRankedLanguageForCategory} from "../src/main.js";
 
 const elm = {
   name: "Elm",
-  type: "Front"
+  category: "Front"
 };
 
 const haskell = {
   name: "Haskell",
-  type: "Back"
+  category: "Back"
 };
 
 const java = {
   name: "Java",
-  type: "Back"
+  category: "Back"
 };
 
 describe('JAVASCRIPT', () => {
   it('should return Elm when passing remi', () => {
     const remi = {
-      name: "Rémi Delgatte",
-      languages: [elm, haskell, java]
+      name: "Rémi",
+      role: "Developer",
+      rankedLanguages: [
+        {language: elm, rank: 1},
+        {language: haskell, rank: 2},
+        {language: java, rank: 3}
+      ]
     };
-    expect(firstLanguageByType(remi, "Front")).toEqual(elm);
+    expect(firstRankedLanguageForCategory(remi, "Front")).toStrictEqual({language: elm, rank: 1});
   });
   it('should return Haskell when passing julien', () => {
     const julien = {
-      name: "Julien Debon",
-      languages: [haskell, java]
+      name: "Julien",
+      role: "Developer",
+      rankedLanguages: [
+        {language: haskell, rank: 1},
+        {language: java, rank: 3}
+      ]
     };
-    expect(firstLanguageByType(julien, "Back")).toEqual(haskell);
+    expect(firstRankedLanguageForCategory(julien, "Back")).toStrictEqual({language: haskell, rank: 1});
   });
-  it('will throw an exception when passing sok', () => {
+  it('should return undefined when passing sok', () => {
     const sok = {
-      name: "Sok Bun",
-      languages: []
+      name: "Sok",
+      role: "ProductOwner"
     };
-    expect(firstLanguageByType(sok, "Front")).toEqual("");
+    expect(firstRankedLanguageForCategory(sok, "Front")).toBeUndefined();
   });
-  it('will throw an exception when passing sok', () => {
+  it('will fail when passing a user without any role neither rankedLanguages', () => {
     const unknownUser = {
       name: "Unknown user"
     };
-    expect(firstLanguageByType(unknownUser, "Front")).toEqual(undefined);
+    expect(firstRankedLanguageForCategory(unknownUser, "Front")).toBeUndefined();
   });
 });

@@ -68,12 +68,6 @@ It can be difficult without a proper infrastructure to begin testing before ever
 But what we also see here is that while bugs are mostly introduced during coding, they are almost never found at that phase. 
 --> 
 
-# Bugs fixing costs
-![](assets/shift-left-3.png)
-
-- The time and effort it takes to **track down the problem** 
-- The challenge of **reproducing defects**
-
 ## The issue with late testing
 
 - Needs to be planned and managed professionally 
@@ -86,6 +80,12 @@ But what we also see here is that while bugs are mostly introduced during coding
 - The debt of testing accumulates towards the later stages of the software flow. Still today, late testing is the most common approach to software quality assurance.
 ==> Instead of writing new code, developers spend most of their time fixing defects that could have been found earlier
 -->
+
+# Bugs fixing costs
+![](assets/shift-left-3.png)
+
+- The time and effort it takes to **track down the problem** 
+- The challenge of **reproducing defects**
 
 # Shifting Left 
 
@@ -170,23 +170,6 @@ When types are checked
 #### Dynamic typing
 
 Types checked on the fly, during execution (on runtime)
-
-#### Type coercion
-
-*Process of converting value from one type to another*
-
-**Explicit type** coercion (= type casting)
-
-```javascript
-Number("3")+5
-8
-```
-**Implicit type** coercion 
-
-```javascript
-"3"+5
-"35"
-```
 
 #### Static typing
 
