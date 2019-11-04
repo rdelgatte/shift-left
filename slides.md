@@ -1,27 +1,3 @@
-Arguments = Chiffres vs opinions - expériences (mob /pair / ...)
-Expériences personnelles => moyens mis en oeuvre pour shifter gauche + bas
-
-Splitter argumentaires 
-- Capers Jones
-- perso
- 
-- éviter linter => parler d'analyse statique
-- insister sur ROI
-- success rates sur 1 slide + inverser ordre + définir success rate
-
-- Argument + = faire moins => moins à tester
-
-- Faire un test qui passe tout le temps => Comment t'en prévenir ?
-
-- change theme
-- ~~"basiquement"~~
-
-late testing = slide à allégé
-
-split message Capers Jones / mon expérience
-
-
-
 ---
 title: Shift left
 date: Nov 7, 2019
@@ -56,11 +32,10 @@ Robustness and maintainability = **it works as designed**
 - 675 companies
 - 13,000 projects
 
-# Bugs introduction
-
+### Bugs introduction
 ![*Mistakes, misunderstanding... but also when fitting pieces together*](assets/shift-left-1.png)
 
-# Bugs detection
+### Bugs detection
 ![*You find bugs... when you start testing*](assets/shift-left-2.png)
 
 <!-- 
@@ -68,7 +43,7 @@ It can be difficult without a proper infrastructure to begin testing before ever
 But what we also see here is that while bugs are mostly introduced during coding, they are almost never found at that phase. 
 --> 
 
-## The issue with late testing
+#### The issue with late testing
 
 - Needs to be planned and managed professionally 
 - Results in a huge amount of time spent on waiting and rework
@@ -81,7 +56,7 @@ But what we also see here is that while bugs are mostly introduced during coding
 ==> Instead of writing new code, developers spend most of their time fixing defects that could have been found earlier
 -->
 
-# Bugs fixing costs
+### Bugs fixing costs
 ![](assets/shift-left-3.png)
 
 - The time and effort it takes to **track down the problem** 
@@ -89,9 +64,11 @@ But what we also see here is that while bugs are mostly introduced during coding
 
 # Shifting Left 
 
-## ![](assets/shift-left-4.png)
+## "Test early, test often"
 
-"Test early, test often"
+![](assets/shift-left-4.png)
+
+### Earlier 
 - Earlier **testing** = earlier **detection**
 - Earlier **detection** = earlier **fixing** 
 - Earlier **fixing** = **significant cost reduction**
@@ -129,9 +106,9 @@ Finding bugs during the actual coding phase = when the cost is the lowest
 
 ## Quality is vital
 
-### Poor quality *< 25% success rate*
-### Mixed quality *< 50% success rate*
-### Good quality *> 90% success rate*
+Poor quality *< 25% success rate*
+Mixed quality *< 50% success rate*
+Good quality *> 90% success rate*
 
 # ![Personal experience](assets/personal-experience.jpg)
 
@@ -160,6 +137,90 @@ Team programming (pair / mob)
 ### Focus efforts in new features instead of bug fixing
 
 # Shifting left even more!
+
+BDD (Unit testing) -> TDD (Tests Driven Development) -> CDD Compiler Driven Development (= Model / Type Driven Development)
+
+# Demo
+
+## Use case
+
+![](assets/julien.png)
+![](assets/sok.png)
+![](assets/remi.png)
+
+I have some persons in my team for whose I want their favourite programming language (`Front` or `Back`)
+
+### Case 1
+
+![](assets/case-remi.png)
+
+### Case 2
+
+![](assets/case-julien.png)
+
+### Case 3
+
+![](assets/case-sok.png)
+
+### ![](assets/use-cases.png)
+
+## Step 1: Javascript (dynamic weak typing)
+
+```javascript
+export const firstRankedLanguageForCategory = (person, category) => {
+  if (person.role === "Developer" && person.rankedLanguages !== undefined) {
+    return person.rankedLanguages
+      .filter(rankedLanguage => rankedLanguage.language.category === category)
+      .sort((first, second) => (first.rank < second.rank) ? 1 : -1)
+      .pop();
+  }
+};
+```
+
+### Observations 
+
+![](assets/red-gauge.png){ class=gauge }
+
+- A lot of tests to write
+- Some un-efficient tests to handle special / error use cases
+- We need to wait for tests execution to get feedback
+
+## Step 2: Typescript: let's put some types
+
+```typescript
+export const firstRankedLanguageForCategory = (person: Person, category: LanguageCategory): RankedLanguage | undefined => {
+  if (person.role === Role.Developer && person.rankedLanguages !== undefined) {
+    return person.rankedLanguages
+      .filter(rankedLanguage => rankedLanguage.language.category === category)
+      .sort((a, b) => (a.rank < b.rank) ? 1 : -1)
+      .pop();
+  }
+};
+```
+
+### Observations
+
+![](assets/yellow-gauge.png){ class=gauge }
+
+- The IDE gives us quick and focused feedbacks
+- Less use cases to assess with unit tests
+
+But... 
+ 
+- Still the model can be improved to avoid special cases 
+- The model does not clearly fit the reality (ProductOwner can have ranked languages)
+
+## Step 3: Elm: What about a better model design?
+
+![](assets/green-gauge.png){ class=gauge }
+
+- The model is well represented with the type system 
+- All cases are handled with the compiler 
+- Only functional test cases are represented (focus on what matters)
+- No hidden use cases (pattern matching)
+
+## What did we learn?
+
 
 ## Choose your poison! 
 
