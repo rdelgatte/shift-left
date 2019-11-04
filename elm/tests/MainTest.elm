@@ -1,4 +1,4 @@
-module MainTest exposing (developerWithMixedLanguagesForCategory, developerWithoutRankedLanguages, scrumMaster)
+module MainTest exposing (developerWithMixedLanguagesForBack, developerWithoutFrontRankedLanguages, productOwner)
 
 import Expect
 import Main exposing (Language, LanguageCategory(..), Person(..), firstRankedLanguageForCategory)
@@ -15,49 +15,37 @@ java =
     Language "Java" Back
 
 
-javascript : Language
-javascript =
-    Language "Javascript" Back
+elm : Language
+elm =
+    Language "Elm" Front
 
 
-scrumMaster : Test
-scrumMaster =
-    test "Giving a non-developer user, then it should return Nothing" <|
+productOwner : Test
+productOwner =
+    test "Giving a product owner, then it should return Nothing" <|
         \_ ->
-            let
-                result =
-                    firstRankedLanguageForCategory (ScrumMaster "Joe-Han") Front
-            in
-            Expect.equal result Nothing
+            ProductOwner "Sok"
+                |> firstRankedLanguageForCategory Front
+                |> Expect.equal Nothing
 
 
-developerWithoutRankedLanguages : Test
-developerWithoutRankedLanguages =
-    test "Giving a developer without ranked languages for the provided category, then it should return Nothing" <|
+developerWithoutFrontRankedLanguages : Test
+developerWithoutFrontRankedLanguages =
+    test "Giving a developer without ranked languages for Front, then it should return Nothing" <|
         \_ ->
-            let
-                developer =
-                    Developer "Julien" [ ( haskell, 1 ) ]
-
-                result =
-                    firstRankedLanguageForCategory developer Front
-            in
-            Expect.equal result Nothing
+            Developer "Julien" [ ( haskell, 1 ) ]
+                |> firstRankedLanguageForCategory Front
+                |> Expect.equal Nothing
 
 
-developerWithMixedLanguagesForCategory : Test
-developerWithMixedLanguagesForCategory =
-    test "Giving a developer with mixed category languages, then it should return the first one for the provided category" <|
+developerWithMixedLanguagesForBack : Test
+developerWithMixedLanguagesForBack =
+    test "Giving a developer with mixed category languages, then it should return the first one for Back" <|
         \_ ->
-            let
-                developer =
-                    Developer "Rémi"
-                        [ ( haskell, 1 )
-                        , ( java, 2 )
-                        , ( javascript, 3 )
-                        ]
-
-                result =
-                    firstRankedLanguageForCategory developer Back
-            in
-            Expect.equal result (Just ( haskell, 1 ))
+            Developer "Rémi"
+                [ ( elm, 1 )
+                , ( haskell, 1 )
+                , ( java, 2 )
+                ]
+                |> firstRankedLanguageForCategory Back
+                |> Expect.equal (Just ( haskell, 1 ))

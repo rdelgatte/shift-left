@@ -5,8 +5,7 @@ export enum LanguageCategory {
 
 export enum Role {
   Developer,
-  ProductOwner,
-  ScrumMaster
+  ProductOwner
 }
 
 export class Language {
@@ -25,7 +24,7 @@ export class Person {
   rankedLanguages?: RankedLanguage[];
 }
 
-export const firstRankedLanguageForCategory = (person: Person, category: LanguageCategory): RankedLanguage | undefined => {
+export const firstRankedLanguageForCategory = (category: LanguageCategory, person: Person): RankedLanguage | undefined => {
   return person.rankedLanguages === undefined || person.role !== Role.Developer ? undefined : person.rankedLanguages
     .filter(rankedLanguage => rankedLanguage.language.category === category)
     .sort((a, b) => (a.rank < b.rank) ? 1 : -1)

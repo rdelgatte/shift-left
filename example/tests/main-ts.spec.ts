@@ -16,40 +16,47 @@ const java: Language = {
 };
 
 describe('TYPESCRIPT', () => {
-  it('should return Elm when passing remi', () => {
-    const remi: Person = {
-      name: "Rémi",
-      role: Role.Developer,
-      rankedLanguages: [
-        {language: elm, rank: 1},
-        {language: haskell, rank: 2},
-        {language: java, rank: 3}
-      ]
-    };
-    expect(firstRankedLanguageForCategory(remi, LanguageCategory.Front)).toStrictEqual({language: elm, rank: 1});
+  describe('Nominal cases', () => {
+    it('should return Elm when passing Rémi', () => {
+      const remi: Person = {
+        name: "Rémi",
+        role: Role.Developer,
+        rankedLanguages: [
+          {language: elm, rank: 1},
+          {language: haskell, rank: 1},
+          {language: java, rank: 2}
+        ]
+      };
+      expect(firstRankedLanguageForCategory(LanguageCategory.Front, remi)).toStrictEqual({language: elm, rank: 1});
+    });
+
+    it('should return Haskell when passing Julien', () => {
+      const julien: Person = {
+        name: "Julien",
+        role: Role.Developer,
+        rankedLanguages: [
+          {language: haskell, rank: 1},
+          {language: java, rank: 3}
+        ]
+      };
+      expect(firstRankedLanguageForCategory(LanguageCategory.Back, julien)).toStrictEqual({language: haskell, rank: 1});
+    });
+
+    it('should return undefined when passing Sok (with empty rankedLanguages)', () => {
+      const sok: Person = {
+        name: "Sok",
+        role: Role.ProductOwner
+      };
+      expect(firstRankedLanguageForCategory(LanguageCategory.Front, sok)).toBeUndefined();
+    });
   });
-  it('should return Haskell when passing julien', () => {
-    const julien = {
-      name: "Julien",
-      role: Role.Developer,
-      rankedLanguages: [
-        {language: haskell, rank: 1},
-        {language: java, rank: 3}
-      ]
-    };
-    expect(firstRankedLanguageForCategory(julien, LanguageCategory.Back)).toStrictEqual({language: haskell, rank: 1});
-  });
-  it('should return undefined when passing sok (with empty rankedLanguages)', () => {
-    const sok = {
-      name: "Sok",
-      role: Role.ProductOwner
-    };
-    expect(firstRankedLanguageForCategory(sok, LanguageCategory.Front)).toBeUndefined();
-  });
-  it('should return undefined when passing an user without role and rankedLanguages', () => {
-    const unknownUser = {
-      name: "Unknown user"
-    };
-    expect(firstRankedLanguageForCategory(unknownUser, LanguageCategory.Front)).toBe(undefined);
+
+  describe('Error cases', () => {
+    it('should return undefined when passing another user without role and rankedLanguages', () => {
+      const unknownUser: Person = {
+        name: "Unknown user"
+      };
+      expect(firstRankedLanguageForCategory(LanguageCategory.Front, unknownUser)).toBeUndefined();
+    });
   });
 });

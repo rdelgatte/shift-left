@@ -20,19 +20,22 @@ type alias Name =
     String
 
 
+type alias RankedLanguage =
+    ( Language, Rank )
+
+
 type Person
-    = Developer Name (List ( Language, Rank ))
+    = Developer Name (List RankedLanguage)
     | ProductOwner Name
-    | ScrumMaster Name
 
 
-firstRankedLanguageForCategory : Person -> LanguageCategory -> Maybe ( Language, Rank )
-firstRankedLanguageForCategory person category =
+firstRankedLanguageForCategory : LanguageCategory -> Person -> Maybe ( Language, Rank )
+firstRankedLanguageForCategory category person =
     case person of
         Developer _ rankedLanguages ->
             rankedLanguages
-                |> List.sortBy Tuple.second
                 |> List.filter (\( language, _ ) -> language.category == category)
+                |> List.sortBy Tuple.second
                 |> List.head
 
         _ ->
