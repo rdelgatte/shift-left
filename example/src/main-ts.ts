@@ -20,9 +20,7 @@ export class Person {
 }
 
 export const firstLanguageForCategory = (category: LanguageCategory, person: Person): Language | undefined => {
-  if (person.languages !== undefined) {
-    return person.languages
-      .filter(language => language.category === category)
-      .shift();
-  }
+  return person.languages
+    .filter(language => language.category === category)
+    .shift();
 };
