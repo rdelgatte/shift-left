@@ -45,3 +45,11 @@ h3 {
 .reference {
     float: left;
 }
+
+#case-1 {
+    vertical-align: middle;
+}
+
+.logo {
+    width: 200px;
+}

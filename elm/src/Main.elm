@@ -1,4 +1,4 @@
-module Main exposing (Language, LanguageCategory(..), Person(..), firstRankedLanguageForCategory)
+module Main exposing (Language, LanguageCategory(..), Person(..), firstLanguageForCategory)
 
 
 type LanguageCategory
@@ -12,30 +12,17 @@ type alias Language =
     }
 
 
-type alias Rank =
-    Int
-
-
-type alias Name =
-    String
-
-
-type alias RankedLanguage =
-    ( Language, Rank )
-
-
 type Person
-    = Developer Name (List RankedLanguage)
-    | ProductOwner Name
+    = Developer String (List Language)
+    | ProductOwner String
 
 
-firstRankedLanguageForCategory : LanguageCategory -> Person -> Maybe RankedLanguage
-firstRankedLanguageForCategory category person =
+firstLanguageForCategory : LanguageCategory -> Person -> Maybe Language
+firstLanguageForCategory category person =
     case person of
-        Developer _ rankedLanguages ->
-            rankedLanguages
-                |> List.filter (\( language, _ ) -> language.category == category)
-                |> List.sortBy Tuple.second
+        Developer _ languages ->
+            languages
+                |> List.filter (\language -> language.category == category)
                 |> List.head
 
         ProductOwner _ ->
