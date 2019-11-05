@@ -1,8 +1,7 @@
-export const firstRankedLanguageForCategory = (languageType, person) => {
-  if (person != null && person.rankedLanguages !== undefined) {
-    return person.rankedLanguages
-      .filter(rankedLanguage => rankedLanguage.language.category === languageType)
-      .sort((first, second) => (first.rank < second.rank) ? 1 : -1)
-      .pop();
+export const firstLanguageForCategory = (languageType, person) => {
+  if (person != null && person.languages !== undefined) {
+    return person.languages
+      .filter(language => language.category === languageType)
+      .shift();
   }
 };

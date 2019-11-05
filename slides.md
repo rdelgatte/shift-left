@@ -132,7 +132,9 @@ Find defects **before testing begins**
 
 # Capers Jones' take-away {class=with-background-image data-background-image="assets/take-away.jpg"}
 
-## Quality excellence has ROI > $15 for each $1 spent
+## Quality excellence ROI {class=with-background-image data-background-image="assets/money.jpg"}
+
+**$4** to **$37** for each **$1 spent**
 
 ## Poor quality is cheaper... 
 
@@ -204,7 +206,7 @@ It keeps happening too late
 
 #### Dynamic typing
 
-![](assets/dynamic-typing.png){ width=80% }
+![](assets/dynamic-typing.png)
 
 #### Static typing
 ![](assets/static-typing.png){ width=80% }
@@ -246,34 +248,25 @@ I want to know my teammates' favourite programming languages (`Front` or `Back`)
 {
   "name": "Rémi",
   "role": "Developer",
-  "rankedLanguages": [
+  "languages": [
     {
-      "language": { "name": "Elm", "category": "Front" },
-      "rank": 1
-    },
+      "name": "Elm",
+      "category": "Front"
+    }, 
     {
-      "language": { "name": "Haskell", "category": "Back" },
-      "rank": 2
-    },
+      "name": "Haskell",
+      "category": "Back"
+    }, 
     {
-      "language": { "name": "Java", "category": "Back" },
-      "rank": 3
+      "name": "Java",
+      "category": "Back"
     }
   ]
 }
 ```
-
 ### Case 1
 
 ![](assets/case-remi.png)
-
-Result calling `Front`:
-```json
-{
-  "language": { "name": "Elm", "category": "Front" },
-  "rank": 1
-}
-```
 
 ### Case 2
 
@@ -290,12 +283,11 @@ Result calling `Front`:
 *(= dynamic weak typing)*
 
 ```javascript
-export const firstRankedLanguageForCategory = (person, category) => {
-  if (person.role === "Developer" && person.rankedLanguages !== undefined) {
-    return person.rankedLanguages
-      .filter(rankedLanguage => rankedLanguage.language.category === category)
-      .sort((first, second) => (first.rank < second.rank) ? 1 : -1)
-      .pop();
+export const firstLanguageForCategory = (languageType, person) => {
+  if (person != null && person.languages !== undefined) {
+    return person.languages
+      .filter(language => language.category === languageType)
+      .shift();
   }
 };
 ```
@@ -304,20 +296,19 @@ export const firstRankedLanguageForCategory = (person, category) => {
 
 ![](assets/red-gauge.png){ class=gauge }
 
-12 unit tests 
+**12 unit tests** 
 
-- Some un-efficient code to handle special / error use cases
-- We need to wait for tests execution to get feedback
+- Feedback **after tests executions**
+- Specific code to prevent special / error use cases
 
-## Step 2: Typescript: let's put some types
+## Step 2: Typescript - let's type
 
 ```typescript
-export const firstRankedLanguageForCategory = (person: Person, category: LanguageCategory): RankedLanguage | undefined => {
-  if (person.role === Role.Developer && person.rankedLanguages !== undefined) {
-    return person.rankedLanguages
-      .filter(rankedLanguage => rankedLanguage.language.category === category)
-      .sort((a, b) => (a.rank < b.rank) ? 1 : -1)
-      .pop();
+export const firstLanguageForCategory = (category: LanguageCategory, person: Person): Language | undefined => {
+  if (person.languages !== undefined) {
+    return person.languages
+      .filter(language => language.category === category)
+      .shift();
   }
 };
 ```
@@ -326,19 +317,25 @@ export const firstRankedLanguageForCategory = (person: Person, category: Languag
 
 ![](assets/yellow-gauge.png){ class=gauge }
 
-6 unit tests (*50% less*)
+**6 unit tests** (*50% less*)
 
-- Still the model can be improved to avoid special cases 
-- The model does not clearly fit the reality (`ProductOwner` can have `rankedLanguages`)
+Still the model can be improved to avoid special cases (`ProductOwner` can have `languages`)
 
-## Step 3: Elm: What about a better model design?
+## Step 3: Elm - a better model?
+
+```elm
+type Person
+    = Developer String (List Language)
+    | ProductOwner String
+```
+
+### Observations 
 
 ![](assets/green-gauge.png){ class=gauge }
 
-6 unit tests
+**6 unit tests**
 
-- A `Person` can either be `Developer` or `ProductOwner` 
-- No hidden use cases (pattern matching)
+**No hidden use cases** (pattern matching)
 
 ## Conclusion
 
@@ -354,31 +351,10 @@ Isolate pure functions from effects
 - IO signature
 - Algebraic effects
 
-<!--### Test automation to solve all problems? 
+# In the end...
 
-#### Waste-reduction solution for the late testing
-- Shorten testing time 
-- Reduce execution testing cost
-
-#### True. But...
-- Often happening after the features are developed (they have more value when being done in parallel)
-    - Missing key scenarios
-    - Automating useless tests
-- Very demanding (most of the effort of the “Test Automation Engineers” is spent battling with automation code and getting the “tests” to work rather than focusing on proper testing and exploring the system.)
-- Expansive 
-- We learned the hard way (Selenium lovers) 
-- And still, the feedback happens late
-
-Global payback of test automation efforts used to be negative in most cases.
-Furthermore, it is not an answer to the original problem as the testing feedback still comes a lot later. 
- 
--->
-
-
-# Shift left: *The sooner, the better*
-
-Shifting left is about doing this identification and prevention of defects sooner.
-
+- Quality is the cheapest 
+- ... I'll keep shifting left to shorten the feedback loop
 
 # Images and references
 
@@ -389,4 +365,6 @@ Shifting left is about doing this identification and prevention of defects soone
 - [Photo by K Zoltan from Pexels](https://www.pexels.com/photo/agriculture-blooming-blossom-blue-sky-544554/)
 - [Image by pasja1000 from Pixabay](https://pixabay.com/photos/far-view-in-flight-swans-high-3698255/)
 - [Photo by Christina Morillo from Pexels](https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/)
+- [Photo by Caleb Oquendo from Pexels
+](https://www.pexels.com/photo/shallow-focus-photo-of-road-sign-on-pole-3162073/)
 <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">

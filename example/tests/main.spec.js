@@ -1,4 +1,4 @@
-import {firstRankedLanguageForCategory} from "../src/main.js";
+import {firstLanguageForCategory} from "../src/main.js";
 
 const elm = {
   name: "Elm",
@@ -18,20 +18,13 @@ const java = {
 const remi = {
   name: "Rémi",
   role: "Developer",
-  rankedLanguages: [
-    {language: elm, rank: 1},
-    {language: java, rank: 3},
-    {language: haskell, rank: 2},
-  ]
+  languages: [elm, haskell, java]
 };
 
 const julien = {
   name: "Julien",
   role: "Developer",
-  rankedLanguages: [
-    {language: haskell, rank: 1},
-    {language: java, rank: 2}
-  ]
+  languages: [haskell, java]
 };
 
 const sok = {
@@ -43,54 +36,51 @@ describe('JAVASCRIPT', () => {
 
   describe('Nominal cases', () => {
     it('should return Elm when passing remi with Front', () => {
-      expect(firstRankedLanguageForCategory("Front", remi)).toStrictEqual({language: elm, rank: 1});
+      expect(firstLanguageForCategory("Front", remi)).toEqual(elm);
     });
 
     it('should return Haskell when passing remi with Back', () => {
-      expect(firstRankedLanguageForCategory("Back", remi)).toStrictEqual({language: haskell, rank: 2});
+      expect(firstLanguageForCategory("Back", remi)).toEqual(haskell);
     });
 
     it('should return Haskell when passing julien with Back', () => {
-      expect(firstRankedLanguageForCategory("Back", julien)).toStrictEqual({language: haskell, rank: 1});
+      expect(firstLanguageForCategory("Back", julien)).toEqual(haskell);
     });
 
     it('should return undefined when passing julien with Front', () => {
-      expect(firstRankedLanguageForCategory("Front", julien)).toBeUndefined();
+      expect(firstLanguageForCategory("Front", julien)).toBeUndefined();
     });
-  });
 
-  describe('Error cases', () => {
     it('should return undefined when passing sok with Front', () => {
-      expect(firstRankedLanguageForCategory("Front", sok)).toBeUndefined();
+      expect(firstLanguageForCategory("Front", sok)).toBeUndefined();
     });
 
     it('should return undefined when passing sok with Back', () => {
-      expect(firstRankedLanguageForCategory("Back", sok)).toBeUndefined();
+      expect(firstLanguageForCategory("Back", sok)).toBeUndefined();
     });
   });
 
   describe('Exception/Breaking cases', () => {
-
     it('will fail when passing null / null', () => {
-      expect(firstRankedLanguageForCategory(null, null)).toBeUndefined();
+      expect(firstLanguageForCategory(null, null)).toBeUndefined();
     });
 
     it('will fail when passing a malformed person', () => {
-      expect(firstRankedLanguageForCategory(undefined, {login: "rdelga05"})).toBeUndefined();
+      expect(firstLanguageForCategory(undefined, {login: "rdelga05"})).toBeUndefined();
     });
 
-    it('will fail when passing a user without any role neither rankedLanguages', () => {
+    it('will fail when passing a user without any role neither languages', () => {
       const unknownUser = {
         name: "Unknown user"
       };
-      expect(firstRankedLanguageForCategory("Front", unknownUser)).toBeUndefined();
+      expect(firstLanguageForCategory("Front", unknownUser)).toBeUndefined();
     });
 
   });
 
   describe('Special case (same behaviour but different meanings)', () => {
     it('will pass even when providing a valid person with invalid language category', () => {
-      expect(firstRankedLanguageForCategory({"name": "Front"}, remi)).toBeUndefined();
+      expect(firstLanguageForCategory({"name": "Front"}, remi)).toBeUndefined();
     });
   });
 });
