@@ -3,9 +3,10 @@ title: Shift left
 date: Nov 7, 2019
 author: Rémi Delgatte
 ---
-![Let's kick open doors!](assets/kick-open-door.png)
 
-# Software quality = ...
+# Let's kick open doors!{class=with-background-image data-background-image="assets/kick-open-door.png"}
+
+# Software quality {class=with-background-image data-background-image="assets/definition.jpg"}
 
 <!-- There are many different definitions of quality. 
 - "capability of a software product to conform to requirements." 
@@ -14,12 +15,12 @@ author: Rémi Delgatte
 --> 
 
 ## Functional quality
-Functional requirements compliance = **it does what it is supposed to do**
+Requirements compliance = **it does what it is supposed to do**
 
 ## Structural quality 
 Robustness and maintainability = **it works as designed**
 
-# Measuring software quality
+# Measuring software quality {class=with-background-image data-background-image="assets/measure.jpg"}
 
 ## Capers Jones
 ![](assets/capers_jones.jpg)
@@ -33,23 +34,33 @@ Robustness and maintainability = **it works as designed**
 - 13,000 projects
 
 ### Bugs introduction
-![*Mistakes, misunderstanding... but also when fitting pieces together*](assets/shift-left-1.png)
+![](assets/shift-left-1.png)
+
+<!--
+*Mistakes, misunderstanding... but also when fitting pieces together*
+-->
 
 ### Bugs detection
-![*You find bugs... when you start testing*](assets/shift-left-2.png)
+![](assets/shift-left-2.png)
+<!--
+*You find bugs... when you start testing*
 
-<!-- 
 It can be difficult without a proper infrastructure to begin testing before everything is ready.
 But what we also see here is that while bugs are mostly introduced during coding, they are almost never found at that phase. 
 --> 
 
-#### The issue with late testing
+#### The issue with late testing {class=with-background-image data-background-image="assets/late-testing.jpg"}
 
-- Needs to be planned and managed professionally 
-- Results in a huge amount of time spent on waiting and rework
+<ul>
+    <li class="fragment" data-fragment-index="0">
+        Needs to be planned and managed professionally 
+    </li> 
+    <li class="fragment" data-fragment-index="1">
+        Huge amount of time spent on waiting and rework
+    </li> 
+</ul>
 
 <!-- 
-- Testers wait for a software version to be tested. 
 - Developers wait for test results to start debugging and fixing. 
 - Testers wait for the fixes to be re-tested. 
 - The debt of testing accumulates towards the later stages of the software flow. Still today, late testing is the most common approach to software quality assurance.
@@ -57,21 +68,37 @@ But what we also see here is that while bugs are mostly introduced during coding
 -->
 
 ### Bugs fixing costs
+
 ![](assets/shift-left-3.png)
 
-- The time and effort it takes to **track down the problem** 
-- The challenge of **reproducing defects**
+<ul>
+    <li class="fragment" data-fragment-index="0">
+        Challenge of **reproducing defects**
+    </li> 
+    <li class="fragment" data-fragment-index="1">
+        Time and effort it takes to **track down the problem** 
+    </li> 
+</ul>
 
-# Shifting Left 
+# Shifting Left{class=with-background-image data-background-image="assets/title.jpg"}
 
 ## "Test early, test often"
 
 ![](assets/shift-left-4.png)
 
 ### Earlier 
-- Earlier **testing** = earlier **detection**
-- Earlier **detection** = earlier **fixing** 
-- Earlier **fixing** = **significant cost reduction**
+
+<ul>
+    <li class="fragment" data-fragment-index="0">
+        Earlier **testing** = earlier **detection**
+    </li> 
+    <li class="fragment" data-fragment-index="1">
+        Earlier **detection** = earlier **fixing** 
+    </li> 
+    <li class="fragment" data-fragment-index="2">
+        Earlier **fixing** = **significant cost reduction**
+    </li> 
+</ul>
 
 ## Unit testing
 
@@ -81,22 +108,29 @@ But what we also see here is that while bugs are mostly introduced during coding
 <!-- Some organizations stop at this point. But you get even more value when you push even further left, into coding itself. After all, this is where bugs are introduced, so let’s start looking for them while development is still working.
 -->
 
-## Pushing even further left (into coding)
+## Further left (into coding)
 
-- Find defects **before testing begins**
-- Shrink bug fixing cycle
+![](assets/shift-left-5.jpg)
 
-### ![](assets/shift-left-5.jpg)
+Find defects **before testing begins**
 
-Coding standards help you avoid bad, dangerous, or insecure code 
+### Shrink bug fixing cycle
 
-### How?
-- Apply development and testing best practices (unit tests, inspections and static code analysis) 
-- Leverage service virtualization to enable continuous testing (CI)
+<ul>
+    <li class="fragment" data-fragment-index="0">
+        Development and testing best practices (unit tests, inspections and static code analysis)
+    </li> 
+    <li class="fragment" data-fragment-index="1">
+        Service virtualization to enable continuous testing (CI)
+    </li> 
+</ul>
 
-Finding bugs during the actual coding phase = when the cost is the lowest 
+<span class="fragment" data-fragment-index="2">
+    **Finding bugs during the actual coding phase = when the cost is the lowest** 
+</span> 
 
-# Capers Jones' take-away
+
+# Capers Jones' take-away {class=with-background-image data-background-image="assets/take-away.jpg"}
 
 ## Quality excellence has ROI > $15 for each $1 spent
 
@@ -105,42 +139,84 @@ Finding bugs during the actual coding phase = when the cost is the lowest
 ![*...until the end of the coding phase*](assets/software-costs.png){ width=60% }
 
 ## Quality is vital
+<ul>
+    <li class="fragment" data-fragment-index="0">
+        Poor quality *< 25% success rate*
+    </li>
+    <li class="fragment" data-fragment-index="1">
+        Medium quality *< 50% success rate*
+    </li>
+    <li class="fragment" data-fragment-index="2">
+        Good quality *> 90% success rate*
+    </li>
+</ul>
 
-Poor quality *< 25% success rate*
-Mixed quality *< 50% success rate*
-Good quality *> 90% success rate*
+# Personal experience {class=with-background-image data-background-image="assets/personal-experience.jpg"}
 
-# ![Personal experience](assets/personal-experience.jpg)
+## History 
 
-## First, waterfall mode / ice cream cone 
+### First, waterfall mode
 
 ![](assets/waterfall-testing.png)
+
+### And the ice cream cone 
+
 ![](assets/ice-cream-cone.png)
 
-## Then, being agile, we test more often but not earlier 
+### Then, being agile, we test more often...
 
 ![](assets/testing-pyramid.png)
 
-- Unit testing / PBT 
-- Integration and NRT
+### But still...
+
+It keeps happening too late
  
 ![](assets/agile-testing.png)
 
 ## Better development practices
 
-Team programming (pair / mob)
+### ***DD**
 
-## Quality is not just about being bug-free
+![](assets/dd.png)
 
-### "High quality benefits schedules, productivity, users"
+### Team programming (pair / mob)
+![](assets/mob-programming.png){ width=60% }
+
+### Egoless programming
+![*You are not your code*](assets/egoless-programming.png)
+
+### Code review
+![](assets/code-review.png)
+
+## Quality is not just about being bug-free{class=with-background-image data-background-image="assets/blue-sky.jpg"}
+
+### High quality benefits schedules
 ### Ease on-boarding (documentation, code guidelines...)
 ### Focus efforts in new features instead of bug fixing
 
-# Shifting left even more!
+# Shifting left even more!{class=with-background-image data-background-image="assets/further-left.jpg"}
 
-BDD (Unit testing) -> TDD (Tests Driven Development) -> CDD Compiler Driven Development (= Model / Type Driven Development)
+## Choose your poison (language)! 
 
-# Demo
+### Static vs Dynamic types
+
+![](assets/dynamic-vs-static.png)
+
+#### Dynamic typing
+
+![](assets/dynamic-typing.png){ width=80% }
+
+#### Static typing
+![](assets/static-typing.png){ width=80% }
+
+### Strong vs Weak
+
+![](assets/strong-vs-weak.png){ width=50% }
+
+- Implicit conversion between data types (*type coercion*)
+- Ways to escape the language's type rules
+
+# Demo {class=with-background-image data-background-image="assets/demo.jpg"}
 
 ## Use case
 
@@ -148,11 +224,56 @@ BDD (Unit testing) -> TDD (Tests Driven Development) -> CDD Compiler Driven Deve
 ![](assets/sok.png)
 ![](assets/remi.png)
 
-I have some persons in my team for whose I want their favourite programming language (`Front` or `Back`)
+I want to know my teammates' favourite programming languages (`Front` or `Back`)
+
+### Model definition 
+
+#### Language 
+```json
+{
+  "name": "Java",
+  "category": "Back"
+}
+```
+```json
+{
+  "name": "Elm",
+  "category": "Front"
+}
+```
+#### Person 
+```json
+{
+  "name": "Rémi",
+  "role": "Developer",
+  "rankedLanguages": [
+    {
+      "language": { "name": "Elm", "category": "Front" },
+      "rank": 1
+    },
+    {
+      "language": { "name": "Haskell", "category": "Back" },
+      "rank": 2
+    },
+    {
+      "language": { "name": "Java", "category": "Back" },
+      "rank": 3
+    }
+  ]
+}
+```
 
 ### Case 1
 
 ![](assets/case-remi.png)
+
+Result calling `Front`:
+```json
+{
+  "language": { "name": "Elm", "category": "Front" },
+  "rank": 1
+}
+```
 
 ### Case 2
 
@@ -164,7 +285,9 @@ I have some persons in my team for whose I want their favourite programming lang
 
 ### ![](assets/use-cases.png)
 
-## Step 1: Javascript (dynamic weak typing)
+## Step 1: Javascript 
+
+*(= dynamic weak typing)*
 
 ```javascript
 export const firstRankedLanguageForCategory = (person, category) => {
@@ -181,8 +304,9 @@ export const firstRankedLanguageForCategory = (person, category) => {
 
 ![](assets/red-gauge.png){ class=gauge }
 
-- A lot of tests to write
-- Some un-efficient tests to handle special / error use cases
+12 unit tests 
+
+- Some un-efficient code to handle special / error use cases
 - We need to wait for tests execution to get feedback
 
 ## Step 2: Typescript: let's put some types
@@ -202,65 +326,31 @@ export const firstRankedLanguageForCategory = (person: Person, category: Languag
 
 ![](assets/yellow-gauge.png){ class=gauge }
 
-- The IDE gives us quick and focused feedbacks
-- Less use cases to assess with unit tests
+6 unit tests (*50% less*)
 
-But... 
- 
 - Still the model can be improved to avoid special cases 
-- The model does not clearly fit the reality (ProductOwner can have ranked languages)
+- The model does not clearly fit the reality (`ProductOwner` can have `rankedLanguages`)
 
 ## Step 3: Elm: What about a better model design?
 
 ![](assets/green-gauge.png){ class=gauge }
 
-- The model is well represented with the type system 
-- All cases are handled with the compiler 
-- Only functional test cases are represented (focus on what matters)
+6 unit tests
+
+- A `Person` can either be `Developer` or `ProductOwner` 
 - No hidden use cases (pattern matching)
 
-## What did we learn?
+## Conclusion
 
+*Write less tests by trusting your compiler doing it for you!*
 
-## Choose your poison! 
+# Again further left? 
 
-### Static vs Dynamic types
+Isolate pure functions from effects
 
-When types are checked
+## Pure function = no side effect
 
-#### Dynamic typing
-
-Types checked on the fly, during execution (on runtime)
-
-#### Static typing
-
-```haskell
-"3" + 5
-<interactive>:3:1: error:
-    • No instance for (Num [Char]) arising from a use of ‘+’
-    • In the expression: "3" + 5
-     In an equation for ‘it’: it = "3" + 5
-```
-Types checked before run-time
-
-#### Statically typed languages benefits
-
-- Compiler
-- Quickest feedback ever
-
-### Strong vs Weak
-
-## Going functional
-
-### Functional vs Imperative patterns
-
-### Immutability
- 
-## Isolate pure functions to side effects
-
-### Pure function = no side effect
-
-### Identify impure functions
+## Tag impure functions
 - IO signature
 - Algebraic effects
 
@@ -288,8 +378,15 @@ Furthermore, it is not an answer to the original problem as the testing feedback
 # Shift left: *The sooner, the better*
 
 Shifting left is about doing this identification and prevention of defects sooner.
-<!-- Many testing activities occur late in the cycle, where it takes longer to figure out problems and costs more to fix them. When you wait to perform testing practices later in the development cycle, your nonfunctional business requirements in particular, such as security and performance testing, are so fundamentally ingrained in your code that all you can really do is patch them up rather than fix them properly.
---> 
 
 
+# Images and references
 
+- [Codexpanse](https://www.youtube.com/watch?v=C5fr0LZLMAs)
+- [Photo by Lukas from Pexels](https://www.pexels.com/photo/person-holding-blue-ballpoint-pen-on-white-notebook-669610/)
+- [Photo by Startup Stock Photos from Pexels](https://www.pexels.com/photo/writing-notes-idea-class-7103/)
+- [Image parFree-Photos de Pixabay](https://pixabay.com/fr/photos/dictionnaire-focus-livre-mot-texte-1149723/)
+- [Photo by K Zoltan from Pexels](https://www.pexels.com/photo/agriculture-blooming-blossom-blue-sky-544554/)
+- [Image by pasja1000 from Pixabay](https://pixabay.com/photos/far-view-in-flight-swans-high-3698255/)
+- [Photo by Christina Morillo from Pexels](https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/)
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">

@@ -29,7 +29,7 @@ type Person
     | ProductOwner Name
 
 
-firstRankedLanguageForCategory : LanguageCategory -> Person -> Maybe ( Language, Rank )
+firstRankedLanguageForCategory : LanguageCategory -> Person -> Maybe RankedLanguage
 firstRankedLanguageForCategory category person =
     case person of
         Developer _ rankedLanguages ->
@@ -38,5 +38,5 @@ firstRankedLanguageForCategory category person =
                 |> List.sortBy Tuple.second
                 |> List.head
 
-        _ ->
+        ProductOwner _ ->
             Nothing

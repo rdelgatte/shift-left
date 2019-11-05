@@ -25,7 +25,7 @@ export class Person {
 }
 
 export const firstRankedLanguageForCategory = (category: LanguageCategory, person: Person): RankedLanguage | undefined => {
-  return person.rankedLanguages === undefined || person.role !== Role.Developer ? undefined : person.rankedLanguages
+  return person.rankedLanguages === undefined ? undefined : person.rankedLanguages
     .filter(rankedLanguage => rankedLanguage.language.category === category)
     .sort((a, b) => (a.rank < b.rank) ? 1 : -1)
     .pop();

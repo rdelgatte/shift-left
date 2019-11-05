@@ -1,6 +1,11 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Ubuntu", sans-serif !important;
+}
+
 .reveal section img {
     border: none;
 }
+
 .slides {
     width: 60% !important;
 }
@@ -9,4 +14,34 @@
     border: none;
     box-shadow: none !important;
     width: 250px;
+}
+
+.with-background-image {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    width: 100%;
+}
+
+#lets-kick-open-doors, #shifting-left {
+    top: 480px !important;
+}
+
+h1 {
+    font-size: 2em !important;
+    margin: 0 !important;
+}
+
+h2 {
+    font-size: 1.7em !important;
+}
+
+h3 {
+    font-size: 1.4em !important;
+}
+
+h3 {
+    font-size: 1.2em !important;
+}
+
+.reference {
+    float: left;
 }
