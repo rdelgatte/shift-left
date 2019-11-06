@@ -140,19 +140,6 @@ Find defects **before testing begins**
 
 ![*...until the end of the coding phase*](assets/software-costs.png){ width=60% }
 
-## Quality is vital
-<ul>
-    <li class="fragment" data-fragment-index="0">
-        Poor quality *< 25% success rate*
-    </li>
-    <li class="fragment" data-fragment-index="1">
-        Medium quality *< 50% success rate*
-    </li>
-    <li class="fragment" data-fragment-index="2">
-        Good quality *> 90% success rate*
-    </li>
-</ul>
-
 # Personal experience {class=with-background-image data-background-image="assets/personal-experience.jpg"}
 
 ## First, waterfall mode
@@ -211,11 +198,6 @@ It keeps happening too late
 - Implicit conversion between data types (*type coercion*)
 - Ways to escape the language's type rules
 
-## It's not just about typing
-
-- Functional programming
-- Immutability
-
 # Demo {class=with-background-image data-background-image="assets/demo.jpg"}
 
 ## Use case
@@ -226,9 +208,7 @@ It keeps happening too late
 
 I want to know my teammates' favourite programming languages (`Front` and `Back`)
 
-### Model definition 
-
-#### Language 
+### Language 
 ```json
 {
   "name": "Java",
@@ -241,7 +221,7 @@ I want to know my teammates' favourite programming languages (`Front` and `Back`
   "category": "Front"
 }
 ```
-#### Person 
+### Person 
 ```json
 {
   "name": "Rémi",
@@ -341,6 +321,24 @@ type Person
 
 *Write less tests by trusting your compiler doing it for you!*
 
+# In the end...
+
+- Quality is the cheapest
+- I'll keep shifting left to shorten the feedback loop
+
+# Images and references
+
+- [Codexpanse](https://www.youtube.com/watch?v=C5fr0LZLMAs)
+- [Photo by Lukas from Pexels](https://www.pexels.com/photo/person-holding-blue-ballpoint-pen-on-white-notebook-669610/)
+- [Photo by Startup Stock Photos from Pexels](https://www.pexels.com/photo/writing-notes-idea-class-7103/)
+- [Image by Free-Photos de Pixabay](https://pixabay.com/fr/photos/dictionnaire-focus-livre-mot-texte-1149723/)
+- [Photo by K Zoltan from Pexels](https://www.pexels.com/photo/agriculture-blooming-blossom-blue-sky-544554/)
+- [Image by pasja1000 from Pixabay](https://pixabay.com/photos/far-view-in-flight-swans-high-3698255/)
+- [Photo by Christina Morillo from Pexels](https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/)
+- [Photo by Caleb Oquendo from Pexels
+](https://www.pexels.com/photo/shallow-focus-photo-of-road-sign-on-pole-3162073/)
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+
 # Again further left? 
 
 Isolate pure functions from effects
@@ -354,7 +352,7 @@ textLength :: Text -> Int
 ## Tag impure functions
 
 ```haskell
-logMessage :: Text -> LogLevel -> IO ()
+logMessage :: Message -> LogLevel -> IO ()
 ```
 
 ## Algebraic effects
@@ -362,21 +360,3 @@ logMessage :: Text -> LogLevel -> IO ()
 ```haskell
 kafkaBrokerUrl :: Members '[ EnvironmentVariables, Log] r => Sem r Text
 ```
-
-# In the end...
-
-- Quality is the cheapest 
-- ... I'll keep shifting left to shorten the feedback loop
-
-# Images and references
-
-- [Codexpanse](https://www.youtube.com/watch?v=C5fr0LZLMAs)
-- [Photo by Lukas from Pexels](https://www.pexels.com/photo/person-holding-blue-ballpoint-pen-on-white-notebook-669610/)
-- [Photo by Startup Stock Photos from Pexels](https://www.pexels.com/photo/writing-notes-idea-class-7103/)
-- [Image parFree-Photos de Pixabay](https://pixabay.com/fr/photos/dictionnaire-focus-livre-mot-texte-1149723/)
-- [Photo by K Zoltan from Pexels](https://www.pexels.com/photo/agriculture-blooming-blossom-blue-sky-544554/)
-- [Image by pasja1000 from Pixabay](https://pixabay.com/photos/far-view-in-flight-swans-high-3698255/)
-- [Photo by Christina Morillo from Pexels](https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/)
-- [Photo by Caleb Oquendo from Pexels
-](https://www.pexels.com/photo/shallow-focus-photo-of-road-sign-on-pole-3162073/)
-<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">

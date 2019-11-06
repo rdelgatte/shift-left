@@ -6,10 +6,6 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
 }
 
-.slides {
-    width: 60% !important;
-}
-
 .gauge {
     border: none;
     box-shadow: none !important;
@@ -22,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #lets-kick-open-doors, #shifting-left {
-    top: 480px !important;
+    top: 450px !important;
 }
 
 h1 {
@@ -40,16 +36,4 @@ h3 {
 
 h3 {
     font-size: 1.2em !important;
-}
-
-.reference {
-    float: left;
-}
-
-#case-1 {
-    vertical-align: middle;
-}
-
-.logo {
-    width: 200px;
 }

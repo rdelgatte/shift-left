@@ -60,27 +60,24 @@ describe('JAVASCRIPT', () => {
     });
   });
 
-  xdescribe('Exception/Breaking cases', () => {
+  describe('Exception/Breaking cases', () => {
     it('will fail when passing null / null', () => {
-      expect(firstLanguageForCategory(null, null)).toBeUndefined();
+      expect(firstLanguageForCategory("Front", null)).toBeUndefined();
     });
 
-    it('will fail when passing a malformed person', () => {
-      expect(firstLanguageForCategory(undefined, {login: "rdelga05"})).toBeUndefined();
+    it('will fail when passing an undefined person', () => {
+      expect(firstLanguageForCategory("Front", undefined)).toBeUndefined();
     });
 
     it('will fail when passing a user without any role neither languages', () => {
-      const unknownUser = {
-        name: "Unknown user"
-      };
-      expect(firstLanguageForCategory("Front", unknownUser)).toBeUndefined();
+      expect(firstLanguageForCategory("Front", {login: "rdelga05"})).toBeUndefined();
     });
 
   });
 
-  xdescribe('Special case (same behaviour but different meanings)', () => {
+  describe('Special case (same behaviour but different meanings)', () => {
     it('will pass even when providing a valid person with invalid language category', () => {
-      expect(firstLanguageForCategory({"name": "Front"}, remi)).toBeUndefined();
+      expect(firstLanguageForCategory(1234, remi)).toBeUndefined();
     });
   });
 });

@@ -1,5 +1,5 @@
-export const firstLanguageForCategory = (languageType, person) => {
+export const firstLanguageForCategory = (category, person) => {
   return person.languages
-    .filter(language => language.category === languageType)
+    .filter(language => language.category === category)
     .shift();
 };
