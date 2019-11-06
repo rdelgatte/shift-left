@@ -90,11 +90,17 @@ nominalCases =
 --                Person "No role"
 --                    |> firstLanguageForCategory Front
 --                    |> equal Nothing
---        ]
---specialCase : Test
---specialCase =
---    describe "Special case (same behaviour but different meanings)" <|
---        [ test "will pass even when providing a valid person with invalid language category" <|
+--        , test "will fail when passing an undefined category" <|
+--            \_ ->
+--                remi
+--                    |> firstLanguageForCategory undefined
+--                    |> equal Nothing
+--        , test "will fail when passing a null category" <|
+--            \_ ->
+--                remi
+--                    |> firstLanguageForCategory null
+--                    |> equal Nothing
+--        , test "will pass even when providing a valid person with invalid language category" <|
 --            \_ ->
 --                remi
 --                    |> firstLanguageForCategory "AnythingElse"
