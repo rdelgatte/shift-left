@@ -56,7 +56,7 @@ But what we also see here is that while bugs are mostly introduced during coding
         Needs to be planned and managed professionally 
     </li> 
     <li class="fragment" data-fragment-index="1">
-        Huge amount of time spent on waiting and rework
+        Huge amount of time spent on waiting and bug fixing
     </li> 
 </ul>
 
@@ -155,17 +155,15 @@ Find defects **before testing begins**
 
 # Personal experience {class=with-background-image data-background-image="assets/personal-experience.jpg"}
 
-## History 
-
-### First, waterfall mode
+## First, waterfall mode
 
 ![](assets/waterfall-testing.png)
 
-### And the ice cream cone 
+### With the ice cream cone 
 
 ![](assets/ice-cream-cone.png)
 
-### Then, being agile, we test more often...
+## Then, being agile, we test more often...
 
 ![](assets/testing-pyramid.png)
 
@@ -197,9 +195,7 @@ It keeps happening too late
 
 ## Choose your poison (language)! 
 
-### Static vs Dynamic types
-
-![](assets/dynamic-vs-static.png)
+### ![](assets/dynamic-vs-static.png)
 
 #### Dynamic typing
 
@@ -215,6 +211,11 @@ It keeps happening too late
 - Implicit conversion between data types (*type coercion*)
 - Ways to escape the language's type rules
 
+## It's not just about typing
+
+- Functional programming
+- Immutability
+
 # Demo {class=with-background-image data-background-image="assets/demo.jpg"}
 
 ## Use case
@@ -223,7 +224,7 @@ It keeps happening too late
 ![](assets/sok.png)
 ![](assets/remi.png)
 
-I want to know my teammates' favourite programming languages (`Front` or `Back`)
+I want to know my teammates' favourite programming languages (`Front` and `Back`)
 
 ### Model definition 
 
@@ -335,6 +336,8 @@ type Person
 **No hidden use cases** (pattern matching)
 
 ## Conclusion
+
+![](assets/compiler.png){width=60%}
 
 *Write less tests by trusting your compiler doing it for you!*
 
