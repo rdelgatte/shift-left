@@ -13,8 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .with-background-image {
-    background-color: rgba(253, 246, 227, 0.7) !important;
-    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 #lets-kick-open-doors, #shifting-left {

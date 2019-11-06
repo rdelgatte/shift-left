@@ -1,7 +1,7 @@
 ---
 title: Shift left
 date: Nov 7, 2019
-author: Rémi Delgatte
+author: Rémi Delgatte (*@rdelgatte*)
 ---
 
 # Let's kick open doors!{class=with-background-image data-background-image="assets/kick-open-door.png"}
@@ -34,14 +34,14 @@ Robustness and maintainability = **it works as designed**
 - 13,000 projects
 
 ### Bugs introduction
-![](assets/shift-left-1.png)
+![](assets/shift-left-1.png){width=100%}
 
 <!--
 *Mistakes, misunderstanding... but also when fitting pieces together*
 -->
 
 ### Bugs detection
-![](assets/shift-left-2.png)
+![](assets/shift-left-2.png){width=100%}
 <!--
 *You find bugs... when you start testing*
 
@@ -49,7 +49,7 @@ It can be difficult without a proper infrastructure to begin testing before ever
 But what we also see here is that while bugs are mostly introduced during coding, they are almost never found at that phase. 
 --> 
 
-#### What's wrong with late testing ?{class=with-background-image data-background-image="assets/late-testing.jpg"}
+#### What's wrong with late testing ?
 
 <ul>
     <li class="fragment" data-fragment-index="0">
@@ -69,7 +69,7 @@ But what we also see here is that while bugs are mostly introduced during coding
 
 ### Bugs fixing costs
 
-![](assets/shift-left-3.png)
+![](assets/shift-left-3.png){width=90%}
 
 <ul>
     <li class="fragment" data-fragment-index="0">
@@ -84,7 +84,7 @@ But what we also see here is that while bugs are mostly introduced during coding
 
 ## "Test early, test often"
 
-![](assets/shift-left-4.png)
+![](assets/shift-left-4.png){width=100%}
 
 ### Earlier 
 
@@ -110,23 +110,18 @@ But what we also see here is that while bugs are mostly introduced during coding
 
 ## Further left (into coding)
 
-![](assets/shift-left-5.jpg)
+![](assets/shift-left-5.jpg){width=100%}
 
 Find defects **before testing begins**
 
 ### Shrink bug fixing cycle
 
-<ul>
-    <li class="fragment" data-fragment-index="0">
-        Development and testing best practices (unit tests, inspections and static code analysis)
-    </li> 
-    <li class="fragment" data-fragment-index="1">
-        Service virtualization to enable continuous testing (CI)
-    </li> 
-</ul>
+<span class="fragment" data-fragment-index="0">
+    Development and testing best practices (**unit tests, inspections and static code analysis**)
+</span> 
 
-<span class="fragment" data-fragment-index="2">
-    **Finding bugs during the actual coding phase = when the cost is the lowest** 
+<span class="fragment" data-fragment-index="1">
+    Service virtualization to enable **continuous testing **
 </span> 
 
 
@@ -174,7 +169,7 @@ It keeps happening too late
 
 ## Quality is not just about being bug-free{class=with-background-image data-background-image="assets/blue-sky.jpg"}
 
-### High quality benefits schedules
+### High quality benefits projects, teams & companies
 ### Ease on-boarding (documentation, code guidelines...)
 ### Focus efforts in new features instead of bug fixing
 
@@ -315,7 +310,7 @@ type Person
 
 **No hidden use cases** (pattern matching)
 
-## Conclusion
+## Demo conclusion
 
 ![](assets/compiler.png){width=60%}
 
