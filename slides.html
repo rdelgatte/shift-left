@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Rémi Delgatte (@rdelgatte)">
+  <title>Shift left</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://revealjs.com/css/reset.css">
+  <link rel="stylesheet" href="https://revealjs.com/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://revealjs.com/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="pandoc.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://revealjs.com/css/print/pdf.css' : 'https://revealjs.com/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://revealjs.com/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Shift left</h1>
+  <p class="author">Rémi Delgatte (<em><span class="citation" data-cites="rdelgatte">@rdelgatte</span></em>)</p>
+  <p class="date">Nov 7, 2019</p>
+</section>
+
+<section id="lets-kick-open-doors" class="title-slide slide level1 with-background-image" data-background-image="assets/kick-open-door.png"><h1>Let’s kick open doors!</h1></section>
+<section><section id="software-quality" class="title-slide slide level1 with-background-image" data-background-image="assets/definition.jpg"><h1>Software quality</h1><!-- There are many different definitions of quality. 
+- "capability of a software product to conform to requirements." 
+- "customer value" 
+- defect level
+--></section><section id="functional-quality" class="title-slide slide level2"><h2>Functional quality</h2><p>Requirements compliance = <strong>it does what it is supposed to do</strong></p></section><section id="structural-quality" class="title-slide slide level2"><h2>Structural quality</h2><p>Robustness and maintainability = <strong>it works as designed</strong></p></section></section>
+<section><section id="measuring-software-quality" class="title-slide slide level1 with-background-image" data-background-image="assets/measure.jpg"><h1>Measuring software quality</h1></section><section id="capers-jones" class="title-slide slide level2"><h2>Capers Jones</h2><p><img data-src="assets/capers_jones.jpg" /></p>
+<blockquote>
+<p>Software quality in 2012: a survey of the state of the art</p>
+</blockquote></section><section id="few-figures" class="title-slide slide level3"><h3>Few figures</h3><ul>
+<li>From 1984 through 2012</li>
+<li>24 countries</li>
+<li>675 companies</li>
+<li>13,000 projects</li>
+</ul></section><section id="bugs-introduction" class="title-slide slide level3"><h3>Bugs introduction</h3><p><img data-src="assets/shift-left-1.png" style="width:100.0%" /></p>
+<!--
+*Mistakes, misunderstanding... but also when fitting pieces together*
+--></section><section id="bugs-detection" class="title-slide slide level3"><h3>Bugs detection</h3><p><img data-src="assets/shift-left-2.png" style="width:100.0%" /> <!--
+*You find bugs... when you start testing*
+
+It can be difficult without a proper infrastructure to begin testing before everything is ready.
+But what we also see here is that while bugs are mostly introduced during coding, they are almost never found at that phase. 
+--></p></section><section id="whats-wrong-with-late-testing" class="slide level4">
+<h4>What’s wrong with late testing ?</h4>
+<ul>
+<li class="fragment" data-fragment-index="0">
+Needs to be planned and managed professionally
+</li>
+<li class="fragment" data-fragment-index="1">
+Huge amount of time spent on waiting and bug fixing
+</li>
+</ul>
+<!-- 
+- Developers wait for test results to start debugging and fixing. 
+- Testers wait for the fixes to be re-tested. 
+- The debt of testing accumulates towards the later stages of the software flow. Still today, late testing is the most common approach to software quality assurance.
+==> Instead of writing new code, developers spend most of their time fixing defects that could have been found earlier
+-->
+</section><section id="bugs-fixing-costs" class="title-slide slide level3"><h3>Bugs fixing costs</h3><p><img data-src="assets/shift-left-3.png" style="width:90.0%" /></p>
+<ul>
+<li class="fragment" data-fragment-index="0">
+Challenge of <strong>reproducing defects</strong>
+</li>
+<li class="fragment" data-fragment-index="1">
+Time and effort it takes to <strong>track down the problem</strong>
+</li>
+</ul></section></section>
+<section><section id="shifting-left" class="title-slide slide level1 with-background-image" data-background-image="assets/title.jpg"><h1>Shifting Left</h1></section><section id="test-early-test-often" class="title-slide slide level2"><h2>“Test early, test often”</h2><p><img data-src="assets/shift-left-4.png" style="width:100.0%" /></p></section><section id="earlier" class="title-slide slide level3"><h3>Earlier</h3><ul>
+<li class="fragment" data-fragment-index="0">
+Earlier <strong>testing</strong> = earlier <strong>detection</strong>
+</li>
+<li class="fragment" data-fragment-index="1">
+Earlier <strong>detection</strong> = earlier <strong>fixing</strong>
+</li>
+<li class="fragment" data-fragment-index="2">
+Earlier <strong>fixing</strong> = <strong>significant cost reduction</strong>
+</li>
+</ul></section><section id="unit-testing" class="title-slide slide level2"><h2>Unit testing</h2><ul>
+<li>Minimize reliance on late testing</li>
+<li>Late cycle tests = to prove functionality (<strong>not to find bugs</strong>)</li>
+</ul>
+<!-- Some organizations stop at this point. But you get even more value when you push even further left, into coding itself. After all, this is where bugs are introduced, so let’s start looking for them while development is still working.
+--></section><section id="further-left-into-coding" class="title-slide slide level2"><h2>Further left (into coding)</h2><p><img data-src="assets/shift-left-5.jpg" style="width:100.0%" /></p>
+<p>Find defects <strong>before testing begins</strong></p></section><section id="shrink-bug-fixing-cycle" class="title-slide slide level3"><h3>Shrink bug fixing cycle</h3><p><span class="fragment" data-fragment-index="0"> Development and testing best practices (<strong>unit tests, inspections and static code analysis</strong>) </span></p>
+<p><span class="fragment" data-fragment-index="1"> Service virtualization to enable <strong>continuous testing </strong> </span></p></section></section>
+<section><section id="capers-jones-take-away" class="title-slide slide level1 with-background-image" data-background-image="assets/take-away.jpg"><h1>Capers Jones’ take-away</h1></section><section id="quality-excellence-roi" class="title-slide slide level2 with-background-image" data-background-image="assets/money.jpg"><h2>Quality excellence ROI</h2><p><strong>$4</strong> to <strong>$37</strong> for each <strong>$1 spent</strong></p></section><section id="poor-quality-is-cheaper" class="title-slide slide level2"><h2>Poor quality is cheaper…</h2><figure>
+<img data-src="assets/software-costs.png" style="width:60.0%" alt="" /><figcaption><em>…until the end of the coding phase</em></figcaption>
+</figure></section></section>
+<section><section id="personal-experience" class="title-slide slide level1 with-background-image" data-background-image="assets/personal-experience.jpg"><h1>Personal experience</h1></section><section id="first-waterfall-mode" class="title-slide slide level2"><h2>First, waterfall mode</h2><p><img data-src="assets/waterfall-testing.png" /></p></section><section id="with-the-ice-cream-cone" class="title-slide slide level3"><h3>With the ice cream cone</h3><p><img data-src="assets/ice-cream-cone.png" /></p></section><section id="then-being-agile-we-test-more-often" class="title-slide slide level2"><h2>Then, being agile, we test more often…</h2><p><img data-src="assets/testing-pyramid.png" /></p></section><section id="but-still" class="title-slide slide level3"><h3>But still…</h3><p>It keeps happening too late</p>
+<p><img data-src="assets/agile-testing.png" /></p></section><section id="better-development-practices" class="title-slide slide level2"><h2>Better development practices</h2></section><section id="dd" class="title-slide slide level3"><h3>*<strong>DD</strong></h3><p><img data-src="assets/dd.png" /></p></section><section id="team-programming-pair-mob" class="title-slide slide level3"><h3>Team programming (pair / mob)</h3><p><img data-src="assets/mob-programming.png" style="width:60.0%" /></p></section><section id="code-review" class="title-slide slide level3"><h3>Code review</h3><p><img data-src="assets/code-review.png" /></p></section><section id="quality-is-not-just-about-being-bug-free" class="title-slide slide level2 with-background-image" data-background-image="assets/blue-sky.jpg"><h2>Quality is not just about being bug-free</h2></section><section id="high-quality-benefits-projects-teams-companies" class="title-slide slide level3"><h3>High quality benefits projects, teams &amp; companies</h3></section><section id="ease-on-boarding-documentation-code-guidelines" class="title-slide slide level3"><h3>Ease on-boarding (documentation, code guidelines…)</h3></section><section id="focus-efforts-in-new-features-instead-of-bug-fixing" class="title-slide slide level3"><h3>Focus efforts in new features instead of bug fixing</h3></section></section>
+<section><section id="shifting-left-even-more" class="title-slide slide level1 with-background-image" data-background-image="assets/further-left.jpg"><h1>Shifting left even more!</h1></section><section id="choose-your-poison-language" class="title-slide slide level2"><h2>Choose your poison (language)!</h2></section><section id="section" class="title-slide slide level3"><h3><img data-src="assets/dynamic-vs-static.png" /></h3></section><section id="dynamic-typing" class="slide level4">
+<h4>Dynamic typing</h4>
+<p><img data-src="assets/dynamic-typing.png" /></p>
+</section><section id="static-typing" class="slide level4">
+<h4>Static typing</h4>
+<p><img data-src="assets/static-typing.png" style="width:80.0%" /></p>
+</section><section id="strong-vs-weak" class="title-slide slide level3"><h3>Strong vs Weak</h3><p><img data-src="assets/strong-vs-weak.png" style="width:50.0%" /></p>
+<ul>
+<li>Implicit conversion between data types (<em>type coercion</em>)</li>
+<li>Ways to escape the language’s type rules</li>
+</ul></section></section>
+<section><section id="demo" class="title-slide slide level1 with-background-image" data-background-image="assets/demo.jpg"><h1>Demo</h1></section><section id="use-case" class="title-slide slide level2"><h2>Use case</h2><p><img data-src="assets/julien.png" /> <img data-src="assets/sok.png" /> <img data-src="assets/remi.png" /></p>
+<p>I want to know my teammates’ favourite programming languages (<code>Front</code> and <code>Back</code>)</p></section><section id="language" class="title-slide slide level3"><h3>Language</h3><div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Java&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Back&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Elm&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Front&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">}</span></span></code></pre></div></section><section id="person" class="title-slide slide level3"><h3>Person</h3><div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Rémi&quot;</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Developer&quot;</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="dt">&quot;languages&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="fu">{</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Elm&quot;</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>      <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Front&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="fu">}</span><span class="ot">,</span> </span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="fu">{</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Haskell&quot;</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>      <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Back&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="fu">}</span><span class="ot">,</span> </span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="fu">{</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Java&quot;</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>      <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Back&quot;</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="fu">}</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="ot">]</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="fu">}</span></span></code></pre></div></section><section id="case-1" class="title-slide slide level3"><h3>Case 1</h3><p><img data-src="assets/case-remi.png" /></p></section><section id="case-2" class="title-slide slide level3"><h3>Case 2</h3><p><img data-src="assets/case-julien.png" /></p></section><section id="case-3" class="title-slide slide level3"><h3>Case 3</h3><p><img data-src="assets/case-sok.png" /></p></section><section id="section-1" class="title-slide slide level3"><h3><img data-src="assets/use-cases.png" /></h3></section><section id="step-1-javascript" class="title-slide slide level2"><h2>Step 1: Javascript</h2><p><em>(= dynamic weak typing)</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">export</span> <span class="kw">const</span> firstLanguageForCategory <span class="op">=</span> (languageType<span class="op">,</span> person) <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">if</span> (person <span class="op">!=</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="va">person</span>.<span class="at">languages</span> <span class="op">!==</span> <span class="kw">undefined</span>) <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">return</span> <span class="va">person</span>.<span class="at">languages</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>      .<span class="at">filter</span>(language <span class="kw">=&gt;</span> <span class="va">language</span>.<span class="at">category</span> <span class="op">===</span> languageType)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>      .<span class="at">shift</span>()<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="op">}</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="op">};</span></span></code></pre></div></section><section id="observations" class="title-slide slide level3"><h3>Observations</h3><p><img data-src="assets/red-gauge.png" class="gauge" /></p>
+<p><strong>12 unit tests</strong></p>
+<ul>
+<li>Feedback <strong>after tests executions</strong></li>
+<li>Specific code to prevent special / error use cases</li>
+</ul></section><section id="step-2-typescript---lets-type" class="title-slide slide level2"><h2>Step 2: Typescript - let’s type</h2><div class="sourceCode" id="cb5"><pre class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">export</span> <span class="kw">const</span> firstLanguageForCategory <span class="op">=</span> (category<span class="op">:</span> LanguageCategory<span class="op">,</span> person<span class="op">:</span> Person)<span class="op">:</span> Language <span class="op">|</span> <span class="dt">undefined</span> <span class="kw">=&gt;</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">if</span> (<span class="va">person</span><span class="op">.</span><span class="at">languages</span> <span class="op">!==</span> <span class="kw">undefined</span>) <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">return</span> <span class="va">person</span><span class="op">.</span><span class="at">languages</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>      .<span class="fu">filter</span>(language <span class="kw">=&gt;</span> <span class="va">language</span><span class="op">.</span><span class="at">category</span> <span class="op">===</span> category)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>      .<span class="fu">shift</span>()<span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="op">}</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="op">};</span></span></code></pre></div></section><section id="observations-1" class="title-slide slide level3"><h3>Observations</h3><p><img data-src="assets/yellow-gauge.png" class="gauge" /></p>
+<p><strong>6 unit tests</strong> (<em>50% less</em>)</p>
+<p>Still the model can be improved to avoid special cases (<code>ProductOwner</code> can have <code>languages</code>)</p></section><section id="step-3-elm---a-better-model" class="title-slide slide level2"><h2>Step 3: Elm - a better model?</h2><div class="sourceCode" id="cb6"><pre class="sourceCode elm"><code class="sourceCode elm"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">type</span> <span class="dt">Person</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="op">=</span> <span class="dt">Developer</span> <span class="dt">String</span> (<span class="dt">List</span> <span class="dt">Language</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="op">|</span> <span class="dt">ProductOwner</span> <span class="dt">String</span></span></code></pre></div></section><section id="observations-2" class="title-slide slide level3"><h3>Observations</h3><p><img data-src="assets/green-gauge.png" class="gauge" /></p>
+<p><strong>6 unit tests</strong></p>
+<p><strong>No hidden use cases</strong> (pattern matching)</p></section><section id="demo-conclusion" class="title-slide slide level2"><h2>Demo conclusion</h2><p><img data-src="assets/compiler.png" style="width:60.0%" /></p>
+<p><em>Write less tests by trusting your compiler doing it for you!</em></p></section></section>
+<section id="in-the-end" class="title-slide slide level1"><h1>In the end…</h1><ul>
+<li>Quality is the cheapest</li>
+<li>I’ll keep shifting left to shorten the feedback loop</li>
+</ul></section>
+<section id="images-and-references" class="title-slide slide level1"><h1>Images and references</h1><ul>
+<li><a href="https://www.youtube.com/watch?v=C5fr0LZLMAs">Codexpanse</a></li>
+<li><a href="https://www.pexels.com/photo/person-holding-blue-ballpoint-pen-on-white-notebook-669610/">Photo by Lukas from Pexels</a></li>
+<li><a href="https://www.pexels.com/photo/writing-notes-idea-class-7103/">Photo by Startup Stock Photos from Pexels</a></li>
+<li><a href="https://pixabay.com/fr/photos/dictionnaire-focus-livre-mot-texte-1149723/">Image by Free-Photos de Pixabay</a></li>
+<li><a href="https://www.pexels.com/photo/agriculture-blooming-blossom-blue-sky-544554/">Photo by K Zoltan from Pexels</a></li>
+<li><a href="https://pixabay.com/photos/far-view-in-flight-swans-high-3698255/">Image by pasja1000 from Pixabay</a></li>
+<li><a href="https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/">Photo by Christina Morillo from Pexels</a></li>
+<li><a href="https://www.pexels.com/photo/shallow-focus-photo-of-road-sign-on-pole-3162073/">Photo by Caleb Oquendo from Pexels</a> <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"></li>
+</ul></section>
+<section><section id="again-further-left" class="title-slide slide level1"><h1>Again further left?</h1><p>Isolate pure functions from effects</p></section><section id="pure-function-no-side-effect" class="title-slide slide level2"><h2>Pure function = no side effect</h2><div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1"></a><span class="ot">textLength ::</span> <span class="dt">Text</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div></section><section id="tag-impure-functions" class="title-slide slide level2"><h2>Tag impure functions</h2><div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="ot">logMessage ::</span> <span class="dt">Message</span> <span class="ot">-&gt;</span> <span class="dt">LogLevel</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div></section><section id="algebraic-effects" class="title-slide slide level2"><h2>Algebraic effects</h2><div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="ot">kafkaBrokerUrl ::</span> <span class="dt">Members</span> &#39;[ <span class="dt">EnvironmentVariables</span>, <span class="dt">Log</span>] r <span class="ot">=&gt;</span> <span class="dt">Sem</span> r <span class="dt">Text</span></span></code></pre></div></section></section>
+    </div>
+  </div>
+
+  <script src="https://revealjs.com/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://revealjs.com/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://revealjs.com/plugin/zoom-js/zoom.js', async: true },
+          { src: 'https://revealjs.com/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
