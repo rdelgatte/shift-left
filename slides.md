@@ -1,3 +1,9 @@
+<!--
+Use pandoc command to generate the slides with revealjs:
+```
+pandoc -t revealjs -s -o index.html slides.md -V revealjs-url=https://unpkg.com/reveal.js@3.9.2/ --slide-level 4 --variable theme="solarized" --css=pandoc.css
+```
+-->
 ---
 title: Shift left
 date: Nov 7, 2019
