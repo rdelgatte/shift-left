@@ -105,15 +105,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <p class="date">Nov 7, 2019</p>
 </section>
 
-<section class="slide level4">
-
-<!--
-Use pandoc command to generate the slides with revealjs:
-```
-pandoc -t revealjs -s -o index.html slides.md -V revealjs-url=https://unpkg.com/reveal.js@3.9.2/ --slide-level 4 --variable theme="solarized" --css=pandoc.css
-```
--->
-</section>
 <section id="lets-kick-open-doors" class="title-slide slide level1 with-background-image" data-background-image="assets/kick-open-door.png"><h1>Let’s kick open doors!</h1></section>
 <section><section id="software-quality" class="title-slide slide level1 with-background-image" data-background-image="assets/definition.jpg"><h1>Software quality</h1><!-- There are many different definitions of quality. 
 - "capability of a software product to conform to requirements." 
@@ -260,7 +251,13 @@ Earlier <strong>fixing</strong> = <strong>significant cost reduction</strong>
 <li><a href="https://www.pexels.com/photo/man-standing-infront-of-white-board-1181345/">Photo by Christina Morillo from Pexels</a></li>
 <li><a href="https://www.pexels.com/photo/shallow-focus-photo-of-road-sign-on-pole-3162073/">Photo by Caleb Oquendo from Pexels</a> <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"></li>
 </ul></section>
-<section><section id="again-further-left" class="title-slide slide level1"><h1>Again further left?</h1><p>Isolate pure functions from effects</p></section><section id="pure-function-no-side-effect" class="title-slide slide level2"><h2>Pure function = no side effect</h2><div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1"></a><span class="ot">textLength ::</span> <span class="dt">Text</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div></section><section id="tag-impure-functions" class="title-slide slide level2"><h2>Tag impure functions</h2><div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="ot">logMessage ::</span> <span class="dt">Message</span> <span class="ot">-&gt;</span> <span class="dt">LogLevel</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div></section><section id="algebraic-effects" class="title-slide slide level2"><h2>Algebraic effects</h2><div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="ot">kafkaBrokerUrl ::</span> <span class="dt">Members</span> &#39;[ <span class="dt">EnvironmentVariables</span>, <span class="dt">Log</span>] r <span class="ot">=&gt;</span> <span class="dt">Sem</span> r <span class="dt">Text</span></span></code></pre></div></section></section>
+<section><section id="again-further-left" class="title-slide slide level1"><h1>Again further left?</h1><p>Isolate pure functions from effects</p></section><section id="pure-function-no-side-effect" class="title-slide slide level2"><h2>Pure function = no side effect</h2><div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1"></a><span class="ot">textLength ::</span> <span class="dt">Text</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span></code></pre></div></section><section id="tag-impure-functions" class="title-slide slide level2"><h2>Tag impure functions</h2><div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="ot">logMessage ::</span> <span class="dt">Message</span> <span class="ot">-&gt;</span> <span class="dt">LogLevel</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span></code></pre></div></section><section id="algebraic-effects" class="title-slide slide level2"><h2>Algebraic effects</h2><div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="ot">kafkaBrokerUrl ::</span> <span class="dt">Members</span> &#39;[ <span class="dt">EnvironmentVariables</span>, <span class="dt">Log</span>] r <span class="ot">=&gt;</span> <span class="dt">Sem</span> r <span class="dt">Text</span></span></code></pre></div>
+<!--
+Use pandoc command to generate the slides with revealjs:
+```
+pandoc -t revealjs -s -o index.html slides.md -V revealjs-url=https://unpkg.com/reveal.js@3.9.2/ --slide-level 4 --variable theme="solarized" --css=pandoc.css
+```
+--></section></section>
     </div>
   </div>
 
